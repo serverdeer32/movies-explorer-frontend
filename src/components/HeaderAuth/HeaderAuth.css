@@ -42,7 +42,7 @@
   padding-left: 15px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .header__navigation {
     display: none;
     padding-left: 0;
@@ -206,7 +206,7 @@
   }
 }
 
-.header__nav {
+.header__navigation-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,7 +215,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .header__nav {
+  .header__navigation-container {
     width: 100%;
     visibility: hidden;
     position: fixed;
@@ -227,7 +227,7 @@
   }
 }
 
-.header__nav_open {
+.header__navigation-container_open {
   width: 100%;
   visibility: visible;
   transition: 0.3s ease-in-out;
