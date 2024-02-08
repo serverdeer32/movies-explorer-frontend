@@ -1,0 +1,98 @@
+.portfolio {
+  padding: 0 70px 90px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .portfolio {
+    padding: 0 50px 50px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .portfolio {
+    padding: 70px 14px 44px;
+  }
+}
+
+.student__portfolio-title {
+  color: #A0A0A0;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  opacity: 0.5;
+  margin: 0 0 55px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .student__portfolio-title {
+    font-size: 14px;
+    margin: 0 0 40px;
+  }
+}
+
+.students__portfolio-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .students__portfolio-nav {
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .students__portfolio-nav {
+    gap: 14px;
+  }
+}
+
+.student__portfolio-link {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E8E8E8;
+  padding: 0 0 26px;
+  transition: 0.3s ease-in-out;
+}
+
+.student__portfolio-link:hover {
+  opacity: 0.5;
+}
+
+.student__portfolio-link:last-child {
+  border-bottom: 0px solid #E8E8E8;
+}
+
+.student__portfolio-link-name {
+  color: #000;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -1.2px;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .student__portfolio-link-name {
+    font-size: 28px;
+    letter-spacing: -1.12px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .student__portfolio-link-name {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+}
+
+.student__column {
+  display: flex;
+  flex-direction: column;
+}
