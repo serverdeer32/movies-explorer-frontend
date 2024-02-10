@@ -60,7 +60,6 @@
 .gallery__subtitle {
   margin: 10px 0 0 0;
   color: #000;
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -69,7 +68,6 @@
 
 .gallery__time {
   color: #A0A0A0;
-  font-family: Inter;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;

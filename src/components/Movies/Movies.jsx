@@ -7,11 +7,11 @@ export default function Movies() {
   document.title = 'Фильмы';
 
   return (
-    <>
+    <main className='main'>
       <HeaderAuth 
       name='movies' />
       <SearchForm />
       <MoviesCardList />
-    </>
+    </main>
   )
 }

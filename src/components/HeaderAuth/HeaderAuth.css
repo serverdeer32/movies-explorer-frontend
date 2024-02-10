@@ -3,6 +3,7 @@
   padding: 18px 70px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header__transparent {
@@ -53,7 +54,6 @@
   text-decoration: none;
   color: #FFF;
   text-align: right;
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -62,6 +62,16 @@
 
 .header__navigation-item:first-of-type {
   display: none;
+}
+
+.header__navigation-item:nth-of-type(2) {
+  margin-left: 70px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .header__navigation-item:nth-of-type(2) {
+    margin-left: 0;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -73,7 +83,6 @@
 .header__navigation-link {
   text-decoration: none;
   color: #000;
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -92,9 +101,17 @@
 }
 
 .header__navigation-link_active {
-  border-bottom: 2px solid black;
-  padding-bottom: 2px;
+  font-weight: 500;
 }
+
+@media screen and (max-width: 768px) {
+  .header__navigation-link_active {
+    font-weight: 400;
+    border-bottom: 2px solid black;
+    padding-bottom: 2px;
+  }
+}
+
 
 @media screen and (max-width: 525px) {
   .header__navigation-link {
@@ -162,7 +179,7 @@
   background: #F9F9F9;
   width: 26px;
   height: 26px;
-  background-image: url('../../images/profile.png');
+  background-image: url('../../images/profile.svg');
   margin-right: 3px;
   background-repeat: no-repeat;
   background-position: center;
@@ -170,7 +187,6 @@
 
 .header__profile-span {
   color: #000;
-  font-family: Inter;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -210,7 +226,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   transition: 0.3s ease-in-out;
 }
 
@@ -240,8 +255,14 @@
   border: none;
   padding: 0;
   background-color: transparent;
-  background-image: url('../../images/menu_burger.png');
+  background-image: url('../../images/menu_burger_black.svg');
   background-position: center;
+  transition: 0.3 ease-in-out;
+}
+
+.header__burger:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -252,7 +273,7 @@
 
 @media screen and (max-width: 525px) {
   .header__burger {
-    background-image: url('../../images/menu_burger.png');
+    background-image: url('../../images/menu_burger_black.svg');
   }
 }
 
@@ -270,6 +291,11 @@
   top: 23px;
   right: 23px;
   transition: opacity .3s ease-in-out;
+}
+
+.header__burger-close:hover {
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 768px) {

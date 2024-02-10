@@ -2,7 +2,7 @@
   padding: 110px 70px 0;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .student {
     padding: 90px 50px 0;
   }
@@ -16,7 +16,6 @@
 
 .student__title {
   color: #000;
-  font-family: Inter;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -37,7 +36,6 @@
 
 .student__name {
   color: #000;
-  font-family: Inter;
   font-size: 50px;
   font-style: normal;
   font-weight: 400;
@@ -46,7 +44,7 @@
   margin: 0 0 18px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .student__name {
     font-size: 40px;
     line-height: 40px;
@@ -65,7 +63,6 @@
 
 .student__job {
   color: #000;
-  font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -73,7 +70,7 @@
   margin: 0 0 26px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .student__job {
     font-size: 12px;
     line-height: 18px;
@@ -91,7 +88,6 @@
 .student__about {
   max-width: 600px;
   color: #000;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -99,7 +95,7 @@
   margin: 0 0 99px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .student__about {
     max-width: 364px;
     font-size: 12px;
@@ -119,7 +115,6 @@
 
 .student__github {
   color: #000;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -139,7 +134,7 @@
   gap: 0;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .student__container {
     padding: 66px 0 91px;
   }
@@ -161,7 +156,7 @@
   border-radius: 10px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .student__photo {
     width: 255px;
     height: 307px;

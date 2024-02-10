@@ -8,7 +8,7 @@ export default function Main() {
   document.title = 'Главная';
 
   return (
-    <main className="main">
+    <main className='main'>
       <Promo />
       <AboutProject />
       <Techs />

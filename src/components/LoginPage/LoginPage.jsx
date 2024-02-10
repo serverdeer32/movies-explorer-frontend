@@ -1,15 +1,19 @@
 import "./LoginPage.css";
-import Logo from "../../images/logo.svg"
 import { Link } from 'react-router-dom'
 
-export default function LoginPage({ name, children }) {
+export default function LoginPage({ name, children, isValid }) {
   return (
     <section className="login">
-      <Link to={'/'}><img src={Logo} className="login__logo" /></Link>
-      <h2 className='login__title'>
+      <Link to={'/'} className="login__logo"></Link>
+      <h1 className='login__title'>
         {name === 'signin' ? 'Рады видеть!' : 'Добро пожаловать!'}
-      </h2>
-      <form name="profile">
+      </h1>
+      <form
+        name="profile"
+        noValidate
+        method="POST"
+        className="login__form"
+      >
         {children}
         <button type="button" className="login__submit">
           {name === 'signin' ? 'Войти' : 'Зарегистрироваться'}

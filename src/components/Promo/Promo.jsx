@@ -6,7 +6,8 @@ function Promo() {
     <section className="intro">
       <div className="intro__column">
         <h1 className="intro__title">
-          Учебный проект студента факультета Веб-разработки.
+          Учебный проект студента факультета 
+          Веб&#8209;разработки.
         </h1>
         <span className="intro__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
@@ -16,7 +17,7 @@ function Promo() {
         </a>
       </div>
       <div className="intro__column">
-        <img className="intro__img" src={PromoImg} />
+        <img className="intro__img" alt="Изображение Web" src={PromoImg} />
       </div>
     </section>
 

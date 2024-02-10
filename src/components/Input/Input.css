@@ -7,7 +7,6 @@
 
 .login__input-name {
   color: #A0A0A0;
-  font-family: Inter;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -17,7 +16,6 @@
 .login__input {
   width: 100%;
   color: #000;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -27,6 +25,10 @@
   padding: 5px 0 10px;
 }
 
+.login__input_invalid {
+  border-bottom: 1px solid red;
+}
+
 .login__error {
   display: block;
   min-height: 16px;
@@ -34,5 +36,11 @@
   font-weight: 400;
   line-height: normal;
   color: #EE3465;
-  margin: 0 0 8px 0;
+  margin: 6px 0 0;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }

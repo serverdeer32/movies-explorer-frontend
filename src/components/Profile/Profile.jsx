@@ -9,7 +9,7 @@ export default function Profile() {
     <>
       <HeaderAuth name='profile' />
       <section className="profile">
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h1 className='profile__title'>Привет, Виталий!</h1>
         <div className="profile__item">
           <span className="profile__span">Имя</span>
           <span className="profile__info">Виталий</span>

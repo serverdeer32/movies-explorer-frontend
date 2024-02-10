@@ -2,7 +2,7 @@
   padding: 110px 70px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1280px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .about {
     padding: 90px 50px;
   }
@@ -16,7 +16,6 @@
 
 .about__title {
   color: #000;
-  font-family: Inter;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -37,7 +36,6 @@
 
 .about__subtitle {
   color: #000;
-  font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -55,7 +53,6 @@
 
 .about__description {
   color: #000;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -91,7 +88,6 @@
 .about__timing-title {
   color: #000;
   text-align: center;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -143,7 +139,6 @@
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
-  font-family: Inter;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -160,7 +155,6 @@
 .about__timing-job {
   color: #A0A0A0;
   text-align: center;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

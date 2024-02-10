@@ -8,6 +8,7 @@ function MoviesCard() {
           <img
             src="https://api.nomoreparties.co/uploads/552242179_1280x720_66bc43b289.jpeg"
             className="gallery__image"
+            alt="Обложка фильма"
           />
         </a>
         <div className="gallery__card-container">

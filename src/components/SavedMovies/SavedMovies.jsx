@@ -7,11 +7,11 @@ export default function SavedMovies() {
   document.title = 'Сохранённые фильмы';
 
   return (
-    <>
+    <main className='main'>
       <HeaderAuth 
       name='saved-movies' />
       <SearchForm />
       <MoviesCardList />
-    </>
+    </main>
   )
 }
