@@ -8,31 +8,30 @@ function Techs() {
       <h3 className="technologies__subtitle">7 технологий</h3>
       <h4 className="technologies__description">
         На курсе веб-разработки мы освоили технологии, которые применили в
-        дипломном проекте.
+        дипломном проекте.</h4>
         <ul className="technologies__list">
-          <li className="techonologies__list-item">
+          <li className="technologies__list-item">
             <span className="technologies__list-name">HTML</span>
           </li>
-          <li className="techonologies__list-item">
+          <li className="technologies__list-item">
             <span className="technologies__list-name">CSS</span>
           </li>
-          <li className="techonologies__list-item">
+          <li className="technologies__list-item">
             <span className="technologies__list-name">JS</span>
           </li>
-          <li className="techonologies__list-item">
+          <li className="technologies__list-item">
             <span className="technologies__list-name">React</span>
           </li>
-          <li className="techonologies__list-item">
+          <li className="technologies__list-item">
             <span className="technologies__list-name">Git</span>
           </li>
-          <li className="techonologies__list-item">
+          <li className="technologies__list-item">
             <span className="technologies__list-name">Express.js</span>
           </li>
-          <li className="techonologies__list-item">
+          <li className="technologies__list-item">
             <span className="technologies__list-name">mongoDB</span>
           </li>
         </ul>
-      </h4>
     </div>
   </section>
   

@@ -4,7 +4,7 @@ export default function SearchForm() {
   return (
     <section className='search'>
       <form noValidate className='search__form'>
-        <div className='search__form-container'>
+        <span className='search__form-container'>
           <input
             type="text"
             name='search'
@@ -13,15 +13,15 @@ export default function SearchForm() {
             required
           />
           <button type='submit' className='search__submit'>Найти</button>
-        </div>
+        </span>
 
         <label className="search__form-checkbox-container">
-          <div className="search__form-checkbox-input">
+          <span className="search__form-checkbox-input">
             <input type="checkbox" />
-            <div className="search__form-checkbox-slider">
-              <div className="search__form-checkbox-knob" />
-            </div>
-          </div>
+            <span className="search__form-checkbox-slider">
+              <span className="search__form-checkbox-knob" />
+            </span>
+          </span>
           <span className="search__form-checkbox-name">Короткометражки</span>
         </label>
       </form>

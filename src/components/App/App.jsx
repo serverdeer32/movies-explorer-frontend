@@ -14,7 +14,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx'
 
 function App() {
   return (
-    <div className="page__container">
+    <div className="page">
       <CurrentUserContext.Provider>
         <Routes>
           <Route path='/' element={

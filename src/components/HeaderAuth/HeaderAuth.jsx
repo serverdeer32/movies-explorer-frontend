@@ -16,7 +16,7 @@ export default function HeaderAuth({ name }) {
   }
 
   return (
-    <header className={name !== 'promo' ? 'header header__transparent' : 'header '}>
+    <header className={name !== 'promo' ? 'header header_transparent' : 'header '}>
       <Link to={'/'} className="header__logo"></Link>
 
       <nav className={`header__navigation-container ${isOpen ? 'header__navigation-container_open' : ''}`}>

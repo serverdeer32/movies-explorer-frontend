@@ -14,7 +14,7 @@
   }
 }
 
-.student__portfolio-title {
+.portfolio__title {
   color: #A0A0A0;
   font-size: 18px;
   font-style: normal;
@@ -25,31 +25,31 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .student__portfolio-title {
+  .portfolio__title {
     font-size: 14px;
     margin: 0 0 40px;
   }
 }
 
-.students__portfolio-nav {
+.portfolio__nav {
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .students__portfolio-nav {
+  .portfolio__nav {
     gap: 32px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .students__portfolio-nav {
+  .portfolio__nav {
     gap: 14px;
   }
 }
 
-.student__portfolio-link {
+.portfolio__nav-link {
   text-decoration: none;
   display: flex;
   justify-content: space-between;
@@ -58,15 +58,15 @@
   transition: 0.3s ease-in-out;
 }
 
-.student__portfolio-link:hover {
+.portfolio__nav-link:hover {
   opacity: 0.5;
 }
 
-.student__portfolio-link:last-child {
+.portfolio__nav-link:last-child {
   border-bottom: 0px solid #E8E8E8;
 }
 
-.student__portfolio-link-name {
+.portfolio__nav-link-name {
   color: #000;
   font-size: 30px;
   font-style: normal;
@@ -76,27 +76,17 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .student__portfolio-link-name {
+  .portfolio__nav-link-name {
     font-size: 28px;
     letter-spacing: -1.12px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .student__portfolio-link-name {
+  .portfolio__nav-link-name {
     font-size: 18px;
     line-height: 28px;
     letter-spacing: -0.72px;
   }
 }
 
-.student__column {
-  display: flex;
-  flex-direction: column;
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .student__column {
-    align-items: center;
-  }
-}

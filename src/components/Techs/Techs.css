@@ -120,7 +120,7 @@
   }
 }
 
-.techonologies__list-item {
+.technologies__list-item {
   width: 90px;
   height: 60px;
   flex-shrink: 0;
@@ -131,7 +131,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .techonologies__list-item {
+  .technologies__list-item {
     width: 84px;
     height: 57px;
     margin: 87px 0 0;
@@ -139,7 +139,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .techonologies__list-item {
+  .technologies__list-item {
     width: 84px;
     height: 57px;
     margin: 0;

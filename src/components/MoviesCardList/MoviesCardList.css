@@ -12,7 +12,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .movies {
-    padding: 20px 10px 80px;
+    padding: 25px 10px 80px;
   }
 }
 
@@ -45,7 +45,7 @@
 }
 
 
-.gallery__more-button {
+.movies__more-button {
   width: 320px;
   height: 36px;
   flex-shrink: 0;
@@ -63,12 +63,12 @@
   transition: 0.3s ease-in-out;
 }
 
-.gallery__more-button:hover {
+.movies__more-button:hover {
   opacity: 0.5;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .gallery__more-button {
+  .movies__more-button {
     width: 240px;
   }
 }

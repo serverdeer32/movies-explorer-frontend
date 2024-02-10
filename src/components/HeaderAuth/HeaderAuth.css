@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.header__transparent {
+.header_transparent {
   background-color: #FFF;
   padding: 18px 70px;
   display: flex;
@@ -124,7 +124,7 @@
   height: 32px;
   flex-shrink: 0;
   border-radius: 40px;
-  background: #2BE080;
+  background: #ffffff;
   box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
   display: flex;
   justify-content: space-between;
@@ -257,7 +257,7 @@
   background-color: transparent;
   background-image: url('../../images/menu_burger_black.svg');
   background-position: center;
-  transition: 0.3 ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .header__burger:hover {
@@ -273,7 +273,7 @@
 
 @media screen and (max-width: 525px) {
   .header__burger {
-    background-image: url('../../images/menu_burger_black.svg');
+    background-image: url('../../images/menu_burger_black_320.svg');
   }
 }
 
