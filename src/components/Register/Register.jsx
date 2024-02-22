@@ -12,10 +12,9 @@ export default function Register({ name, onRegister, setError }) {
     e.preventDefault();
     onRegister(values.username, values.email, values.password)
   }
-  
+
   return (
-    
-    <LoginPage name={name} onSubmit={handleSubmit} isValid={isValid} setError={setError} values={values}>
+    <LoginPage name={name} onSubmit={handleSubmit} isValid={isValid} setError={setError}>
       <Input
         name="username"
         type="text"
@@ -24,7 +23,6 @@ export default function Register({ name, onRegister, setError }) {
         value={values.username}
         onChange={(evt) => {
           handleChange(evt)
-          setError(false)
         }}
         error={errors.username}
         isInputValid={isInputValid.username}
@@ -38,7 +36,6 @@ export default function Register({ name, onRegister, setError }) {
         value={values.email}
         onChange={(evt) => {
           handleChange(evt)
-          setError(false)
         }}
         error={errors.email}
         isInputValid={isInputValid.email}
@@ -51,8 +48,7 @@ export default function Register({ name, onRegister, setError }) {
         placeholder="Ваш пароль"
         value={values.password}
         onChange={(evt) => {
-          handleChange(evt)
-          setError(false)
+          handleChange(evt) 
         }}
         error={errors.password}
         isInputValid={isInputValid.password}

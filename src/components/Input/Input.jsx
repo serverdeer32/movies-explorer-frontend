@@ -14,6 +14,7 @@ export default function Input({ title, name, placeholder, error, type, onChange,
           minLength={3}
           value={value || ''}
           onChange={onChange}
+          required  
         />
         <span className="login__error">{error}</span>
       </label>

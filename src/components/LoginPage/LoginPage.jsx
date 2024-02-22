@@ -4,15 +4,12 @@ import ErrorContext from '../../contexts/ErrorContext';
 import { useContext, useEffect } from "react";
 
 
-export default function LoginPage({ name, children, onSubmit, isValid, setError, values }) {
+export default function LoginPage({ name, children, onSubmit, isValid, setError }) {
   const error = useContext(ErrorContext)
 
   useEffect(() => {
     setError(false)
-  }, [setError, values])
-
-
-
+  }, [setError])
 
   return (
     <main className='main'>
@@ -29,13 +26,17 @@ export default function LoginPage({ name, children, onSubmit, isValid, setError,
           className="login__form"
           method="POST"
         >
-          <div className="login__form-inputs">
-            {children}
-          </div>
+          {children}
+
           <button disabled={!isValid} type="submit" className="login__submit">
             {name === 'signin' ? 'Войти' : 'Зарегистрироваться'}
           </button>
-          <span className={`login__auth-error ${error && 'login__auth-error_active'}`}>{'При регистрации произошла ошибка.'}</span>
+          {name === 'signin' ?
+            <span className={`login__auth-error ${error && 'login__auth-error_active'}`}>{'Неправильный логин или пароль.'}</span>
+            :
+            <span className={`login__auth-error ${error && 'login__auth-error_active'}`}>{'При регистрации произошла ошибка.'}</span>
+          }
+
         </form>
 
         {name === 'signin' ?

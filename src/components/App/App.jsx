@@ -50,6 +50,7 @@ function App() {
       })
       .catch((err) => {
         console.error(`Ошибка авторизации ${err}`)
+        setError(err);
       })
   }
 
@@ -149,7 +150,7 @@ function App() {
 
 
             <Route path='/signin' element={
-              <Login name='signin' onLogin={handleLogin} />
+              <Login name='signin' setError={setError} error={error}  onLogin={handleLogin} />
             } />
 
             <Route path='/signup' element={

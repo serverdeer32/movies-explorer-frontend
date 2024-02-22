@@ -139,14 +139,15 @@
 .login__form {
   display: flex;
   flex-direction: column;
-}
-
-.login__form-inputs {
-  height: 255px;
-  display: flex;
-  flex-direction: column;
   gap: 3px;
 }
+
+/* .login__form-inputs {
+  
+  display: flex;
+  flex-direction: column;
+  
+} */
 
 .login__auth-error {
   display: block;
