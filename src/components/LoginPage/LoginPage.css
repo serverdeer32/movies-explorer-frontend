@@ -73,6 +73,11 @@
   cursor: pointer;
 }
 
+.login__submit:disabled {
+  background: #9e9e9e;
+  cursor: not-allowed;
+}
+
 .login__submit:hover {
   opacity: 0.8;
 }
@@ -141,4 +146,20 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+}
+
+.login__auth-error {
+  display: block;
+  visibility: hidden;
+  min-height: 16px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  color: #EE3465;
+  margin: 6px auto 0;
+  transition: 0.3s ease-in-out;
+}
+
+.login__auth-error_active {
+  visibility: visible;
 }

@@ -14,12 +14,14 @@ import Profile from '../Profile/Profile.jsx'
 import SavedMovies from '../SavedMovies/SavedMovies.jsx'
 import mainApi from '../../utils/MainApi.js';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import ErrorContext from '../../contexts/ErrorContext';
 
 function App() {
   const navigate = useNavigate()
   const [loggedIn, setLoggedIn] = useState(localStorage.jwt);
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([])
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (localStorage.jwt) {
@@ -63,6 +65,8 @@ function App() {
       })
       .catch((err) => {
         console.error(`Ошибка регистрации ${err}`)
+        setError(err);
+
       })
   }
 
@@ -89,72 +93,74 @@ function App() {
     <div className="page">
 
       <CurrentUserContext.Provider value={currentUser}>
-        <Routes>
-          <Route path='/' element={
-            <>
-              <Header isAuth={loggedIn} />
-              <Main />
-              <Footer />
-            </>
-          } />
-
-          <Route
-            path='/movies'
-            element={
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                element={
-                  <>
-                    <Header isAuth={loggedIn} />
-                    <Movies savedMovies={savedMovies} handleLike={handleLike} />
-                    <Footer />
-                  </>
-                }
-              />
+        <ErrorContext.Provider value={error}>
+          <Routes>
+            <Route path='/' element={
+              <>
+                <Header isAuth={loggedIn} />
+                <Main />
+                <Footer />
+              </>
             } />
 
-          <Route
-            path='/saved-movies'
-            element={
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                element={
-                  <>
-                    <Header isAuth={loggedIn} />
-                    <SavedMovies savedMovies={savedMovies} handleDelete={handleDeleteMovie}/>
-                    <Footer />
-                  </>
-                }
-              />
+            <Route
+              path='/movies'
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  element={
+                    <>
+                      <Header isAuth={loggedIn} />
+                      <Movies savedMovies={savedMovies} handleLike={handleLike} />
+                      <Footer />
+                    </>
+                  }
+                />
+              } />
+
+            <Route
+              path='/saved-movies'
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  element={
+                    <>
+                      <Header isAuth={loggedIn} />
+                      <SavedMovies savedMovies={savedMovies} handleDelete={handleDeleteMovie} />
+                      <Footer />
+                    </>
+                  }
+                />
+              } />
+
+            <Route
+              path='/profile'
+              element={
+                <ProtectedRoute
+                  loggedIn={loggedIn}
+                  element={
+                    <>
+                      <Header isAuth={loggedIn} />
+                      <Profile onSignOut={handleSignOut} />
+                    </>
+                  }
+                />
+              } />
+
+
+            <Route path='/signin' element={
+              <Login name='signin' onLogin={handleLogin} />
             } />
 
-          <Route
-            path='/profile'
-            element={
-              <ProtectedRoute
-                loggedIn={loggedIn}
-                element={
-                  <>
-                    <Header isAuth={loggedIn} />
-                    <Profile onSignOut={handleSignOut} />
-                  </>
-                }
-              />
+            <Route path='/signup' element={
+              <Register name='signup' setError={setError} error={error} onRegister={handleRegister} />
             } />
 
+            <Route path='*' element={
+              <Error />} />
 
-          <Route path='/signin' element={
-            <Login name='signin' onLogin={handleLogin} />
-          } />
-
-          <Route path='/signup' element={
-            <Register name='signup' onRegister={handleRegister} />
-          } />
-
-          <Route path='*' element={
-            <Error />} />
-
-        </Routes>
+          </Routes>
+        </ErrorContext.Provider>
       </CurrentUserContext.Provider>
     </div>
   );

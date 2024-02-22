@@ -1,7 +1,19 @@
 import "./LoginPage.css";
 import { Link } from 'react-router-dom'
+import ErrorContext from '../../contexts/ErrorContext';
+import { useContext, useEffect } from "react";
 
-export default function LoginPage({ name, children, onSubmit }) {
+
+export default function LoginPage({ name, children, onSubmit, isValid, setError, values }) {
+  const error = useContext(ErrorContext)
+
+  useEffect(() => {
+    setError(false)
+  }, [setError, values])
+
+
+
+
   return (
     <main className='main'>
       <section className="login">
@@ -20,9 +32,10 @@ export default function LoginPage({ name, children, onSubmit }) {
           <div className="login__form-inputs">
             {children}
           </div>
-          <button type="submit" className="login__submit">
+          <button disabled={!isValid} type="submit" className="login__submit">
             {name === 'signin' ? 'Войти' : 'Зарегистрироваться'}
           </button>
+          <span className={`login__auth-error ${error && 'login__auth-error_active'}`}>{'При регистрации произошла ошибка.'}</span>
         </form>
 
         {name === 'signin' ?

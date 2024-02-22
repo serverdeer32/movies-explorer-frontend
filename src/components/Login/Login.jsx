@@ -3,7 +3,7 @@ import Input from '../Input/Input'
 import FormValidation from '../../hooks/FormValidation';
 
 export default function Login({ name, onLogin }) {
-  const { values, errors, handleChange, isInputValid } = FormValidation()
+  const { values, errors, handleChange, isInputValid, isValid } = FormValidation()
 
   document.title = 'Авторизация';
 
@@ -14,7 +14,7 @@ export default function Login({ name, onLogin }) {
 
   return (
 
-    <LoginPage name={name} onSubmit={handleSubmit}>
+    <LoginPage name={name} onSubmit={handleSubmit} isValid={isValid}>
       <Input
         name="email"
         type="email"

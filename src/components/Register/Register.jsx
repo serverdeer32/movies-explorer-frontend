@@ -2,8 +2,9 @@ import LoginPage from '../LoginPage/LoginPage'
 import Input from '../Input/Input'
 import FormValidation from '../../hooks/FormValidation';
 
-export default function Register({ name, onRegister }) {
-  const { values, errors, handleChange, isInputValid } = FormValidation()
+
+export default function Register({ name, onRegister, setError }) {
+  const { values, errors, handleChange, isInputValid, isValid } = FormValidation()
 
   document.title = 'Регистрация';
 
@@ -11,10 +12,10 @@ export default function Register({ name, onRegister }) {
     e.preventDefault();
     onRegister(values.username, values.email, values.password)
   }
-
+  
   return (
-
-    <LoginPage name={name} onSubmit={handleSubmit}>
+    
+    <LoginPage name={name} onSubmit={handleSubmit} isValid={isValid} setError={setError} values={values}>
       <Input
         name="username"
         type="text"
@@ -23,9 +24,11 @@ export default function Register({ name, onRegister }) {
         value={values.username}
         onChange={(evt) => {
           handleChange(evt)
+          setError(false)
         }}
         error={errors.username}
         isInputValid={isInputValid.username}
+        required
       />
       <Input
         name="email"
@@ -35,9 +38,11 @@ export default function Register({ name, onRegister }) {
         value={values.email}
         onChange={(evt) => {
           handleChange(evt)
+          setError(false)
         }}
         error={errors.email}
         isInputValid={isInputValid.email}
+        required
       />
       <Input
         name="password"
@@ -47,9 +52,11 @@ export default function Register({ name, onRegister }) {
         value={values.password}
         onChange={(evt) => {
           handleChange(evt)
+          setError(false)
         }}
         error={errors.password}
         isInputValid={isInputValid.password}
+        required
       />
     </LoginPage>
   )
