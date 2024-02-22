@@ -46,6 +46,8 @@
 
 
 .movies__more-button {
+  margin: 0 auto;
+  display: block;
   width: 320px;
   height: 36px;
   flex-shrink: 0;

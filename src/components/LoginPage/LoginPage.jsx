@@ -1,7 +1,7 @@
 import "./LoginPage.css";
 import { Link } from 'react-router-dom'
 
-export default function LoginPage({ name, children, isValid }) {
+export default function LoginPage({ name, children, onSubmit }) {
   return (
     <main className='main'>
       <section className="login">
@@ -13,13 +13,14 @@ export default function LoginPage({ name, children, isValid }) {
         <form
           name="profile"
           noValidate
-          method="POST"
+          onSubmit={onSubmit}
           className="login__form"
+          method="POST"
         >
           <div className="login__form-inputs">
             {children}
           </div>
-          <button type="button" className="login__submit">
+          <button type="submit" className="login__submit">
             {name === 'signin' ? 'Войти' : 'Зарегистрироваться'}
           </button>
         </form>

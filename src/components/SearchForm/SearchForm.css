@@ -199,4 +199,13 @@
 	left: calc(100% - 12px);
 }
 
-
+.search__error {
+  display: block;
+  min-height: 16px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  color: #EE3465;
+  margin: 6px 0 0;
+  box-sizing: content-box;
+}

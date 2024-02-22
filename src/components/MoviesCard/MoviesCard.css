@@ -1,5 +1,6 @@
 .movies__list-card {
   width: 100%;
+  
 }
 
 .movies__list-image {
@@ -47,15 +48,29 @@
   border: none;
   background-color: transparent;
   background-image: url(../../images/save1.svg);
-  background-position: -6px -3px;
   background-repeat: no-repeat;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 
+.movies__list-unsave {
+  background-image: url(../../images/save1d.svg);
+}
+
+.movies__list-delete {
+  background-image:none;
+}
+
+.movies__list-card:hover .movies__list-delete {
+  background-image: url(../../images/delete-movie.svg);
+  
+}
+
 .movies__list-save:hover {
   opacity: 0.5;
 }
+
+
 
 .movies__list-title {
   margin: 10px 0 0 0;

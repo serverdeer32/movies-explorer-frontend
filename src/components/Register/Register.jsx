@@ -1,15 +1,20 @@
 import LoginPage from '../LoginPage/LoginPage'
 import Input from '../Input/Input'
-import FormValidation from '../utils/FormValidation';
+import FormValidation from '../../hooks/FormValidation';
 
-export default function Register({ name }) {
+export default function Register({ name, onRegister }) {
   const { values, errors, handleChange, isInputValid } = FormValidation()
 
   document.title = 'Регистрация';
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    onRegister(values.username, values.email, values.password)
+  }
+
   return (
 
-    <LoginPage name={name}>
+    <LoginPage name={name} onSubmit={handleSubmit}>
       <Input
         name="username"
         type="text"

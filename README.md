@@ -6,3 +6,4 @@
 
 ## Инфо
 Использован макет **light-1**
+Ссылка на проект: http://movieexplorer.akzntsv.nomoredomainsmonster.ru  

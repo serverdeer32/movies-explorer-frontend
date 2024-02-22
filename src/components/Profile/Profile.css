@@ -73,6 +73,12 @@
   text-decoration: none;
   transition: 0.3s ease-in-out;
   margin-top: 206px;
+  border: none;
+  background-color: #FFF;
+}
+
+.profile__edit-link_disabled {
+  opacity: 0.5;
 }
 
 .profile__edit-link:hover {
@@ -107,6 +113,12 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border: none;
+  background-color: #FFF;
+}
+
+.profile__info:enabled {
+  background-color: #f5f5f5;
 }
 
 .profile__item {
@@ -114,9 +126,26 @@
   justify-content: space-between;
   padding-bottom: 16px;
   border-bottom: 1px solid #E8E8E8;
+  width: 100%;
 }
 
 .profile__item:nth-child(3) {
   border-bottom: 0;
   margin-top: 16px;
+}
+
+.profile__error {
+  display: block;
+  min-height: 16px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  color: #EE3465;
+  margin: 6px 0 0;
+  box-sizing: content-box;
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
 }

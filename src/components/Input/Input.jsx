@@ -2,7 +2,6 @@ import "./Input.css";
 
 export default function Input({ title, name, placeholder, error, type, onChange, value, isInputValid }) {
 
-  console.log(isInputValid)
   return (
     <>
       <label className="login__label">
