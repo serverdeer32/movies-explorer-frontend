@@ -108,7 +108,7 @@ class ApiMain {
 }
 
 const mainApi = new ApiMain({
-  baseUrl: 'https://api.movieexplorer.akzntsv.nomoredomainsmonster.ru',
+  baseUrl: 'https://api.akzntsv.nomoredomainsmonster.ru',
 });
 
 export default mainApi
