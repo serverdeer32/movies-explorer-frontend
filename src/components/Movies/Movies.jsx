@@ -37,9 +37,9 @@ export default function Movies({ savedMovies, handleLike, setError }) {
     )
   }, [])
 
-  console.log(moviesShowed)
-
   function findMovies(query) {
+    setMoviesShowed(getConfig(deviceWidth)[0])
+
     if (!allMovies.length) {
       setIsLoading(true)
       moviesApi.getMovies()
@@ -57,7 +57,6 @@ export default function Movies({ savedMovies, handleLike, setError }) {
         .finally(() => setIsLoading(false))
     } else {
       search(query, filter, allMovies)
-      setMoviesShowed(getConfig(deviceWidth)[0])
     }
   }
 
@@ -67,8 +66,6 @@ export default function Movies({ savedMovies, handleLike, setError }) {
       const query = JSON.parse(localStorage.query);
       const shorts = JSON.parse(localStorage.shorts);
       const movies = JSON.parse(localStorage.movies);
-
-
       setServerError(false)
       setSearchQuery(query)
       setFilter(shorts)
