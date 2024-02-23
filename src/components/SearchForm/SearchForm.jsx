@@ -18,10 +18,10 @@ export default function SearchForm({ filter, searchQuery, setError, allMovies, s
   function toggleShorts() {
     if (filter) {
       setFilter(false)
-      search(searchQuery, filter, allMovies)
+      search(searchQuery, false, allMovies)
     } else {
       setFilter(true)
-      search(searchQuery, filter, allMovies)
+      search(searchQuery, true, allMovies)
     }
   }
 
