@@ -22,6 +22,12 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [savedMovies, setSavedMovies] = useState([])
   const [error, setError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [isSend, setIsSend] = useState(false)
+
+  useEffect(() => {
+    handleTokenCheck();
+  }, []);
 
   useEffect(() => {
     if (localStorage.jwt) {
@@ -41,7 +47,22 @@ function App() {
     }
   }, [loggedIn])
 
+  function handleTokenCheck() {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      mainApi.checkToken(jwt)
+        .then(() => {
+          setLoggedIn(true);
+        })
+        .catch((err) => {
+          console.error(`Ошибка проверки токена ${err}`)
+          setLoggedIn(false)
+        })
+    }
+  }
+
   function handleLogin(email, password) {
+    setIsSend(true)
     mainApi.login(email, password)
       .then(res => {
         localStorage.setItem('jwt', res.token)
@@ -52,6 +73,7 @@ function App() {
         console.error(`Ошибка авторизации ${err}`)
         setError(err);
       })
+      .finally(() => setIsSend(false))
   }
 
   function handleSignOut() {
@@ -60,6 +82,7 @@ function App() {
   }
 
   function handleRegister(username, email, password) {
+    setIsSend(true)
     mainApi.register(username, email, password)
       .then(() => {
         handleLogin(email, password);
@@ -67,8 +90,8 @@ function App() {
       .catch((err) => {
         console.error(`Ошибка регистрации ${err}`)
         setError(err);
-
       })
+      .finally(() => setIsSend(false))
   }
 
   function handleLike(data, isLiked) {
@@ -112,7 +135,7 @@ function App() {
                   element={
                     <>
                       <Header isAuth={loggedIn} />
-                      <Movies savedMovies={savedMovies} handleLike={handleLike} />
+                      <Movies savedMovies={savedMovies} setError={setError} handleLike={handleLike} />
                       <Footer />
                     </>
                   }
@@ -127,7 +150,7 @@ function App() {
                   element={
                     <>
                       <Header isAuth={loggedIn} />
-                      <SavedMovies savedMovies={savedMovies} handleDelete={handleDeleteMovie} />
+                      <SavedMovies savedMovies={savedMovies} setError={setError} handleDelete={handleDeleteMovie} />
                       <Footer />
                     </>
                   }
@@ -142,7 +165,16 @@ function App() {
                   element={
                     <>
                       <Header isAuth={loggedIn} />
-                      <Profile onSignOut={handleSignOut} />
+                      <Profile
+                        onSignOut={handleSignOut}
+                        isSuccess={isSuccess}
+                        setIsSuccess={setIsSuccess}
+                        setError={setError}
+                        error={error}
+                        isSend={isSend}
+                        setIsSend={setIsSend}
+                        setCurrentUser={setCurrentUser} />
+
                     </>
                   }
                 />
@@ -150,11 +182,11 @@ function App() {
 
 
             <Route path='/signin' element={
-              <Login name='signin' setError={setError} error={error}  onLogin={handleLogin} />
+              <Login name='signin' isAuth={loggedIn} setError={setError} error={error} onLogin={handleLogin} />
             } />
 
             <Route path='/signup' element={
-              <Register name='signup' setError={setError} error={error} onRegister={handleRegister} />
+              <Register name='signup' isAuth={loggedIn} setError={setError} error={error} onRegister={handleRegister} />
             } />
 
             <Route path='*' element={

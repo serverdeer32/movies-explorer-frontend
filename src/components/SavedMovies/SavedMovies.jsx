@@ -2,48 +2,47 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { useCallback, useEffect, useState } from "react";
 
-export default function SavedMovies({ savedMovies, handleDelete }) {
+export default function SavedMovies({ savedMovies, handleDelete, setError }) {
   document.title = 'Сохранённые фильмы';
+
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState();
-  const [searchedFilms, setSearchedFilms] = useState([]);
-  const notFound = (searchedFilms.length === 0 && searchQuery !== "");
+  const [searchedFilms, setSearchedFilms] = useState(savedMovies);
 
-  const films = useCallback((search, movies) => {
+
+  const search = useCallback((search, filter, movies) => {
     setSearchQuery(search)
-    setSearchedFilms(movies.filter(movie => {
-      const isMatchQuery = movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchQuery.toLowerCase());
+    setSearchedFilms(movies.filter((movie) => {
+      const isMatchQuery = movie.nameRU.toLowerCase().includes(search.toLowerCase()) || movie.nameEN.toLowerCase().includes(search.toLowerCase());
       const isMatchDuration = movie.duration <= 40;
 
       return filter ? isMatchQuery && isMatchDuration : isMatchQuery;
     })
     )
-  }, [filter, searchQuery])
+  }, [])
 
   useEffect(() => {
-    films(searchQuery, savedMovies)
-  }, [savedMovies, searchQuery, filter, films])
+    search(searchQuery, filter, savedMovies)
+  }, [savedMovies, filter, search])
 
-  function handleSearch(query) {
-    localStorage.setItem('search', query);
-    setSearchQuery(query);
-    films(query, savedMovies)
-  }
-
-  function handleFilter() {
-    localStorage.setItem('filter', !filter);
-    setFilter(!filter);
+  function findMovies(query) {
+    search(query, filter, savedMovies)
   }
 
   return (
     <main className='main'>
       <SearchForm
-        onSearch={handleSearch}
-        onFilter={handleFilter}
-        search={searchQuery}
-        filter={filter} />
-      {notFound && <p className="movies__error">Ничего не найдено</p>}
+        filter={filter}
+        findMovies={findMovies}
+        searchQuery={searchQuery}
+        setError={setError}
+        allMovies={savedMovies}
+        search={search}
+        setFilter={setFilter}
+        setSearchQuery={setSearchQuery}
+
+      />
       <MoviesCardList handleDelete={handleDelete} savedMovies={savedMovies} movies={searchedFilms} />
     </main>
   )

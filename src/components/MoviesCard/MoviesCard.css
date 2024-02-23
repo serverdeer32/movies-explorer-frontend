@@ -49,8 +49,8 @@
   background-color: transparent;
   background-image: url(../../images/save1.svg);
   background-repeat: no-repeat;
-  cursor: pointer;
   transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .movies__list-unsave {
@@ -58,19 +58,13 @@
 }
 
 .movies__list-delete {
-  background-image:none;
-}
-
-.movies__list-card:hover .movies__list-delete {
   background-image: url(../../images/delete-movie.svg);
-  
 }
 
 .movies__list-save:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
-
-
 
 .movies__list-title {
   margin: 10px 0 0 0;

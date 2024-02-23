@@ -11,3 +11,5 @@ export const getConfig = (width) => {
   if (width >= 640) return paginationConfig[640];
   if (width >= 320) return paginationConfig[320];
 }
+
+export const EmailRegex = "^\\S+@\\S+\\.\\S+$"

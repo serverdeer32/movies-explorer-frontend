@@ -105,6 +105,17 @@ class ApiMain {
     })
       .then(this._getResponse)
   }
+
+  checkToken(token) {
+    return fetch(`${this._url}/users/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    })
+      .then((data) => data);
+  };
 }
 
 const mainApi = new ApiMain({

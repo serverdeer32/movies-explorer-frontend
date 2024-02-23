@@ -1,12 +1,21 @@
 import LoginPage from '../LoginPage/LoginPage'
 import Input from '../Input/Input'
 import FormValidation from '../../hooks/FormValidation';
+import { EmailRegex } from "../../utils/constants";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-
-export default function Register({ name, onRegister, setError }) {
+export default function Register({ name, onRegister, setError, isAuth }) {
   const { values, errors, handleChange, isInputValid, isValid } = FormValidation()
+  const navigate = useNavigate();
 
   document.title = 'Регистрация';
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate('/movies', { replace: true });
+    }
+  }, [isAuth, navigate]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,6 +48,7 @@ export default function Register({ name, onRegister, setError }) {
         }}
         error={errors.email}
         isInputValid={isInputValid.email}
+        pattern={EmailRegex}
         required
       />
       <Input

@@ -4,33 +4,49 @@ import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 import FormValidation from '../../hooks/FormValidation.js';
 import { useContext, useState, useEffect } from 'react';
 import apiMain from '../../utils/MainApi';
+import { EmailRegex } from "../../utils/constants";
+import ErrorContext from '../../contexts/ErrorContext'
 
-export default function Profile({ onSignOut }) {
+
+export default function Profile({ onSignOut, isSuccess, setIsSuccess, setError, isSend, setIsSend, setCurrentUser }) {
   const { values, errors, handleChange, isValid, setValue } = FormValidation()
 
   document.title = 'Профиль';
 
   const user = useContext(CurrentUserContext)
   const [isEditing, setIsEditing] = useState(false);
+  const error = useContext(ErrorContext)
 
   useEffect(() => {
     setValue('username', user.name);
     setValue('email', user.email);
   }, [user, setValue]);
 
+  useEffect(() => {
+    setIsSuccess(false);
+    setIsEditing(false);
+  }, [setIsSuccess, setIsEditing])
+
+
   const handleEditClick = () => {
     setIsEditing(true);
+    setIsSuccess(false);
   };
 
   const handleSave = () => {
+    setIsSend(true)
     apiMain.setUserInfo(values.username, values.email, localStorage.getItem("jwt"))
-      .then(() => {
+      .then((res) => {
         setIsEditing(false);
+        setIsSuccess(true);
+        setError(false);
+        setCurrentUser(res)
       })
       .catch((err) => {
+        setError(true)
         console.error(`Ошибка при редактировании данных пользователя: ${err}`)
       })
-      .finally(() => console.log('Данные успешно сохранены'))
+      .finally(() => setIsSend(false))
   };
 
   function handleSubmit(evt) {
@@ -54,7 +70,7 @@ export default function Profile({ onSignOut }) {
                 disabled={!isEditing}
                 onChange={(evt) => {
                   handleChange(evt)
-                  }
+                }
                 }
                 required
               />
@@ -70,17 +86,28 @@ export default function Profile({ onSignOut }) {
                 type="email"
                 value={values.email ? values.email : ''}
                 disabled={!isEditing}
+                pattern={EmailRegex}
                 onChange={(evt) => {
                   handleChange(evt)
-                  }
+                }
                 }
               />
             </label>
             <span className='profile__error'>{errors.email}</span>
 
-            {!isEditing ? <button onClick={handleEditClick} className='profile__edit-link'>Редактировать</button> : (
-              <button onClick={handleSave} className={`profile__edit-link ${isValid ? '' : 'profile__edit-link_disabled'}`} disabled={!isValid}>Сохранить</button>
-            )}</form>
+            <span className={`profile__error-edit ${error ? 'profile__error-edit_visible' : isSuccess && 'profile__error_success'}`}>{error ? 'Не удалось сохранить профиль' : 'Данные профиля обновлены'}</span>
+
+            {!isEditing
+              ?
+              <button onClick={handleEditClick} className='profile__edit-link'>Редактировать</button>
+              :
+              <button onClick={handleSave}
+                className={`profile__edit-link ${(values.username === user.name && values.email === user.email) || !isValid || error ? 'profile__edit-link_disabled' : ''}`}
+                disabled={!isValid || isSend || error}
+              >{isSend ? 'Сохранение...' : 'Сохранить'}</button>
+            }
+
+          </form>
           <Link onClick={onSignOut} className="profile__logout" to="/">Выйти из аккаунта</Link>
         </section>
       </main>

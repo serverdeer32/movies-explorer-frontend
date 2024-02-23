@@ -1,27 +1,33 @@
 import './SearchForm.css'
-import { useState } from "react";
+import { useContext } from "react";
+import ErrorContext from '../../contexts/ErrorContext';
 
-export default function SearchForm({onSearch, onFilter, search, filter}) {
-  const [searchInput, setSearchInput] = useState(search)
-  const [error, setError] = useState(false);
-  
+export default function SearchForm({ filter, searchQuery, setError, allMovies, search, setFilter, findMovies, setSearchQuery }) {
+  const error = useContext(ErrorContext)
 
   function handleSearch(e) {
     e.preventDefault()
-
-    if (searchInput.trim() === '') {
-      setError(true);
-      return;
+    if (e.target.search.value) {
+      findMovies(e.target.search.value)
+      setError(false)
     } else {
-      setError(false);
+      setError(true)
     }
-    onSearch(searchInput)
   }
 
+  function toggleShorts() {
+    if (filter) {
+      setFilter(false)
+      search(searchQuery, filter, allMovies)
+    } else {
+      setFilter(true)
+      search(searchQuery, filter, allMovies)
+    }
+  }
 
   return (
     <section className='search'>
-      <form noValidate className='search__form' autoComplete='off'>
+      <form noValidate className='search__form' autoComplete='off' onSubmit={handleSearch}>
         <span className='search__form-container'>
           <input
             type="text"
@@ -30,10 +36,14 @@ export default function SearchForm({onSearch, onFilter, search, filter}) {
             placeholder='Фильм'
             className='search__input'
             required
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value)
+              setError(false)
+            }
+            }
           />
-          <button type='submit' className='search__submit' onClick={handleSearch}>Найти</button>
+          <button type='submit' className='search__submit'>Найти</button>
         </span>
         {
           error && <span className='search__error'>Нужно ввести ключевое слово</span>
@@ -41,7 +51,7 @@ export default function SearchForm({onSearch, onFilter, search, filter}) {
 
         <label className="search__form-checkbox-container">
           <span className="search__form-checkbox-input">
-            <input type="checkbox" checked={filter} onChange={onFilter} />
+            <input type="checkbox" checked={filter} onChange={() => toggleShorts()} />
             <span className="search__form-checkbox-slider">
               <span className="search__form-checkbox-knob" />
             </span>
