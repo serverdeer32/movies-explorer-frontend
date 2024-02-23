@@ -37,6 +37,8 @@ export default function Movies({ savedMovies, handleLike, setError }) {
     )
   }, [])
 
+  console.log(moviesShowed)
+
   function findMovies(query) {
     if (!allMovies.length) {
       setIsLoading(true)
@@ -55,7 +57,7 @@ export default function Movies({ savedMovies, handleLike, setError }) {
         .finally(() => setIsLoading(false))
     } else {
       search(query, filter, allMovies)
-
+      setMoviesShowed(getConfig(deviceWidth)[0])
     }
   }
 
@@ -66,6 +68,7 @@ export default function Movies({ savedMovies, handleLike, setError }) {
       const shorts = JSON.parse(localStorage.shorts);
       const movies = JSON.parse(localStorage.movies);
 
+
       setServerError(false)
       setSearchQuery(query)
       setFilter(shorts)
@@ -74,10 +77,12 @@ export default function Movies({ savedMovies, handleLike, setError }) {
     }
   }, [search])
 
+
   useEffect(() => {
     const step = getConfig(deviceWidth)[1];
     setMoviesShowed(prev => prev - prev % step);
-  }, [deviceWidth])
+  }, [deviceWidth, search])
+
 
   const handleShowMore = () => {
     setMoviesShowed(moviesShowed + getConfig(deviceWidth)[1]);

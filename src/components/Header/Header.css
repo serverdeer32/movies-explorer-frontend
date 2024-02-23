@@ -103,6 +103,12 @@
 }
 
 @media screen and (max-width: 768px) {
+  .header__navigation-link_white {
+    color: #000;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .header__navigation-link_active {
     font-weight: 400;
     border-bottom: 2px solid black;
@@ -315,7 +321,6 @@
 
 .header_transparent {
   background-color: #FFF;
-  padding: 18px 70px;
   display: flex;
   justify-content: space-between;
 }     
@@ -417,11 +422,4 @@
   font-weight: 500;
   line-height: 12px;
   margin-left: 11px;
-}
-
-.header_transparent {
-  background-color: #FFF;
-  padding: 18px 70px;
-  display: flex;
-  justify-content: space-between;
 }

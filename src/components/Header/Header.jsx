@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 
-export default function HeaderUnauth({ isAuth }) {
+export default function Header({ isAuth }) {
 
   const { pathname } = useLocation()
   const [isOpen, setIsOpen] = useState(false)
