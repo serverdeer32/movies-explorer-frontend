@@ -5,10 +5,10 @@ import { useCallback, useEffect, useState } from "react";
 export default function SavedMovies({ savedMovies, handleDelete, setError }) {
   document.title = 'Сохранённые фильмы';
 
-
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState();
   const [searchedFilms, setSearchedFilms] = useState(savedMovies);
+  const [firstSearch, setFirstSearch] = useState(true)
 
 
   const search = useCallback((search, filter, movies) => {
@@ -23,10 +23,16 @@ export default function SavedMovies({ savedMovies, handleDelete, setError }) {
   }, [])
 
   useEffect(() => {
+    if (savedMovies.length === 0) {
+      setFirstSearch(true)
+    } else {
+      setFirstSearch(false)
+    }
     search(searchQuery, filter, savedMovies)
   }, [savedMovies, filter, search])
 
   function findMovies(query) {
+    setFirstSearch(false)
     search(query, filter, savedMovies)
   }
 
@@ -43,7 +49,7 @@ export default function SavedMovies({ savedMovies, handleDelete, setError }) {
         setSearchQuery={setSearchQuery}
 
       />
-      <MoviesCardList handleDelete={handleDelete} savedMovies={savedMovies} movies={searchedFilms} />
+      <MoviesCardList handleDelete={handleDelete} savedMovies={savedMovies} movies={searchedFilms} firstSearch={firstSearch} />
     </main>
   )
 }

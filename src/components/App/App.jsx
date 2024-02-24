@@ -182,11 +182,11 @@ function App() {
 
 
             <Route path='/signin' element={
-              <Login name='signin' isAuth={loggedIn} setError={setError} error={error} onLogin={handleLogin} />
+              <Login name='signin' isSend={isSend} isAuth={loggedIn} setError={setError} error={error} onLogin={handleLogin} />
             } />
 
             <Route path='/signup' element={
-              <Register name='signup' isAuth={loggedIn} setError={setError} error={error} onRegister={handleRegister} />
+              <Register name='signup' isSend={isSend} isAuth={loggedIn} setError={setError} error={error} onRegister={handleRegister} />
             } />
 
             <Route path='*' element={

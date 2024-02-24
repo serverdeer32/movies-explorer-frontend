@@ -1,6 +1,6 @@
 import "./Input.css";
 
-export default function Input({ title, name, placeholder, error, type, onChange, value, isInputValid, pattern }) {
+export default function Input({ title, name, placeholder, error, type, onChange, value, isInputValid, pattern, isSend }) {
 
   return (
     <>
@@ -15,6 +15,7 @@ export default function Input({ title, name, placeholder, error, type, onChange,
           value={value || ''}
           onChange={onChange}
           pattern={pattern}
+          disabled={isSend}
           required  
         />
         <span className="login__error">{error}</span>

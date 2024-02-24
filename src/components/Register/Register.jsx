@@ -5,7 +5,7 @@ import { EmailRegex } from "../../utils/constants";
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Register({ name, onRegister, setError, isAuth }) {
+export default function Register({ name, onRegister, setError, isAuth, isSend }) {
   const { values, errors, handleChange, isInputValid, isValid } = FormValidation()
   const navigate = useNavigate();
 
@@ -36,12 +36,13 @@ export default function Register({ name, onRegister, setError, isAuth }) {
         error={errors.username}
         isInputValid={isInputValid.username}
         required
+        isSend={isSend}
       />
       <Input
         name="email"
         type="email"
         title="E-Mail"
-        placeholder="Ваша почта"
+        placeholder="Ваша почта в формате user@domain.com"
         value={values.email}
         onChange={(evt) => {
           handleChange(evt)
@@ -50,6 +51,7 @@ export default function Register({ name, onRegister, setError, isAuth }) {
         isInputValid={isInputValid.email}
         pattern={EmailRegex}
         required
+        isSend={isSend}
       />
       <Input
         name="password"
@@ -63,6 +65,7 @@ export default function Register({ name, onRegister, setError, isAuth }) {
         error={errors.password}
         isInputValid={isInputValid.password}
         required
+        isSend={isSend}
       />
     </LoginPage>
   )

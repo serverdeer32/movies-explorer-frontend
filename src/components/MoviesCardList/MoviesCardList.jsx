@@ -1,7 +1,9 @@
 import './MoviesCardList.css'
 import MoviesCard from '../MoviesCard/MoviesCard'
+import { useLocation } from 'react-router-dom'
 
-function MoviesList({ movies, savedMovies, handleLike, handleDelete }) {
+function MoviesList({ movies, savedMovies, handleLike, handleDelete, serverError, firstSearch }) {
+  const { pathname } = useLocation()
 
   return (
 
@@ -19,7 +21,11 @@ function MoviesList({ movies, savedMovies, handleLike, handleDelete }) {
             )
           })}
         </ul>
-      ) : (<p className="movies__error">Ничего не найдено</p>)}
+      ) : serverError ? <p className="movies__error">{serverError}</p>
+        : !firstSearch ? <p className="movies__error">Ничего не найдено</p>
+        : pathname === '/movies' ? <p className="movies__error">Выполните поиск, чтобы увидеть список фильмов</p>
+        : <p className="movies__error">Нет сохраненных фильмов</p>
+        }
     </div>
 
   );

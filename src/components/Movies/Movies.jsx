@@ -17,6 +17,7 @@ export default function Movies({ savedMovies, handleLike, setError }) {
   const [isLoading, setIsLoading] = useState(false);
   const [moviesShowed, setMoviesShowed] = useState(() => getConfig(deviceWidth)[0]);
   const [serverError, setServerError] = useState('')
+  const [firstSearch, setFirstSearch] = useState(true)
 
   const displayMovies = searchedFilms.slice(0, moviesShowed);
 
@@ -48,6 +49,7 @@ export default function Movies({ savedMovies, handleLike, setError }) {
           setIsLoading(false)
           setServerError(false)
           setFilter(false)
+          setFirstSearch(false)
           search(query, filter, res)
         })
         .catch((err) => {
@@ -70,6 +72,7 @@ export default function Movies({ savedMovies, handleLike, setError }) {
       setSearchQuery(query)
       setFilter(shorts)
       setAllMovies(movies)
+      setFirstSearch(false)
       search(query, shorts, movies)
     }
   }, [search])
@@ -104,7 +107,8 @@ export default function Movies({ savedMovies, handleLike, setError }) {
             serverError={serverError}
             handleLike={handleLike}
             savedMovies={savedMovies}
-            movies={displayMovies} />}
+            movies={displayMovies}
+            firstSearch={firstSearch} />}
         {searchedFilms.length > displayMovies.length && <button className="movies__more-button" onClick={handleShowMore}>Ещё</button>}
       </main>
     </>

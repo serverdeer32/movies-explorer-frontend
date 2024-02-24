@@ -66,8 +66,9 @@ export default function Profile({ onSignOut, isSuccess, setIsSuccess, setError, 
                 className='profile__info'
                 name="username"
                 type="text"
+                placeholder='Имя пользователя'
                 value={values.username ? values.username : ''}
-                disabled={!isEditing}
+                disabled={!isEditing || isSend}
                 onChange={(evt) => {
                   handleChange(evt)
                 }
@@ -81,11 +82,11 @@ export default function Profile({ onSignOut, isSuccess, setIsSuccess, setError, 
               <span className="profile__span">E-Mail</span>
               <input
                 className='profile__info'
-                placeholder="email"
+                placeholder="user@domain.com"
                 name="email"
                 type="email"
                 value={values.email ? values.email : ''}
-                disabled={!isEditing}
+                disabled={!isEditing || isSend}
                 pattern={EmailRegex}
                 onChange={(evt) => {
                   handleChange(evt)

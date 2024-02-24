@@ -1,6 +1,5 @@
 .movies__list-card {
   width: 100%;
-  
 }
 
 .movies__list-image {
@@ -58,6 +57,16 @@
 }
 
 .movies__list-delete {
+  background-image:none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .movies__list-delete {
+    background-image: url(../../images/delete-movie.svg);
+  }
+}
+
+.movies__list-card:hover .movies__list-delete {
   background-image: url(../../images/delete-movie.svg);
 }
 
