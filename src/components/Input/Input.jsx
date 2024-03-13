@@ -1,8 +1,7 @@
 import "./Input.css";
 
-export default function Input({ title, name, placeholder, error, type, onChange, value, isInputValid }) {
+export default function Input({ title, name, placeholder, error, type, onChange, value, isInputValid, pattern, isSend }) {
 
-  console.log(isInputValid)
   return (
     <>
       <label className="login__label">
@@ -15,6 +14,9 @@ export default function Input({ title, name, placeholder, error, type, onChange,
           minLength={3}
           value={value || ''}
           onChange={onChange}
+          pattern={pattern}
+          disabled={isSend}
+          required  
         />
         <span className="login__error">{error}</span>
       </label>

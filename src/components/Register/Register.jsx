@@ -1,15 +1,29 @@
 import LoginPage from '../LoginPage/LoginPage'
 import Input from '../Input/Input'
-import FormValidation from '../utils/FormValidation';
+import FormValidation from '../../hooks/FormValidation';
+import { EmailRegex } from "../../utils/constants";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Register({ name }) {
-  const { values, errors, handleChange, isInputValid } = FormValidation()
+export default function Register({ name, onRegister, setError, isAuth, isSend }) {
+  const { values, errors, handleChange, isInputValid, isValid } = FormValidation()
+  const navigate = useNavigate();
 
   document.title = 'Регистрация';
 
-  return (
+  useEffect(() => {
+    if (isAuth) {
+      navigate('/movies', { replace: true });
+    }
+  }, [isAuth, navigate]);
 
-    <LoginPage name={name}>
+  function handleSubmit(e) {
+    e.preventDefault();
+    onRegister(values.username, values.email, values.password)
+  }
+
+  return (
+    <LoginPage name={name} onSubmit={handleSubmit} isValid={isValid} setError={setError}>
       <Input
         name="username"
         type="text"
@@ -21,18 +35,23 @@ export default function Register({ name }) {
         }}
         error={errors.username}
         isInputValid={isInputValid.username}
+        required
+        isSend={isSend}
       />
       <Input
         name="email"
         type="email"
         title="E-Mail"
-        placeholder="Ваша почта"
+        placeholder="Ваша почта в формате user@domain.com"
         value={values.email}
         onChange={(evt) => {
           handleChange(evt)
         }}
         error={errors.email}
         isInputValid={isInputValid.email}
+        pattern={EmailRegex}
+        required
+        isSend={isSend}
       />
       <Input
         name="password"
@@ -41,10 +60,12 @@ export default function Register({ name }) {
         placeholder="Ваш пароль"
         value={values.password}
         onChange={(evt) => {
-          handleChange(evt)
+          handleChange(evt) 
         }}
         error={errors.password}
         isInputValid={isInputValid.password}
+        required
+        isSend={isSend}
       />
     </LoginPage>
   )
